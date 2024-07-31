@@ -1,36 +1,41 @@
-# Stage 1: Build
+# Build Stage
 FROM node:18 AS build
 
+
+# Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if present) to /app
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy all source files to /app
+# Copy the rest of the application files
 COPY . .
 
-# Build the project
+
+
+# Build the application
 RUN npm run build
 
-# Stage 2: Production
-FROM node:18-slim
+# Production Stage
+FROM node:18
 
+
+# Set the working directory
 WORKDIR /app
 
-# Copy the build output from the build stage
+# Copy only the necessary files from the build stage
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/node_modules ./node_modules
+COPY package*.json ./
 
-# Copy package.json and package-lock.json to /app
-COPY --from=build /app/package*.json ./
-
-# Install only production dependencies
+# Install production dependencies
 RUN npm install
 
-# Expose the port the app will run on
-EXPOSE 3000
 
-# Command to run the app
+
+# Expose port
+EXPOSE 3000
 CMD ["node", "./dist/index.js"]
