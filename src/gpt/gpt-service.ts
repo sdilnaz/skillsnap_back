@@ -14,6 +14,7 @@ const systemPrompt = `
 Предоставьте конструктивную обратную связь о том, как фотограф может улучшить изображение.
 Убедитесь, что ваш анализ подробный и включает конкретные предложения по улучшению в каждой категории.
 Не описывайте, что изображено на фотографии, дайте конструктивную обратную связь. 
+Давай конкретные рекомдации , например: в таких условиях лучше повысить экспозицию или рекомендации для редактирования фото. 
 Provide the feedback in russian in JSON format with categories "composition", "lighting", "exposure", "placement_of_objects", "rule_of_thirds", "strong sides of photo", "suggestion to improve".
 Highlight the most importnt parts. For each categorie put score from 0 to 100. Without any delimeters such as commas or quotes return JSON format (also do not print in your response \n's)
 The JSON format should be as follows:
