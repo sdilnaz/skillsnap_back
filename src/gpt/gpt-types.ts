@@ -6,7 +6,7 @@ export type EvaluationResult = {
 
 export const systemPromptJsonExample = `
 {
-  "evalution": {
+  "evaluation": {
     "composition": {
       "feedback": "",
       "suggestions_for_improvement": "",

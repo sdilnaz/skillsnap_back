@@ -20,7 +20,7 @@ interface IUser extends Document {
 
 const UploadedImageSchema: Schema = new Schema({
     url: { type: String, required: true },
-    evaluation: { type: Schema.Types.Mixed }
+    evaluation: { type: Schema.Types.Mixed  }
   });
 
   
